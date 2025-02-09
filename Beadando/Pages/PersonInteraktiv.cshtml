@@ -1,0 +1,53 @@
+﻿@page
+@model Beadando.Pages.PersonInteraktivModel
+@{
+    ViewData["Title"] = "embörök";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h2>@ViewData["Title"]</h2>
+
+    <form method="post" class="mb-4">
+        <div class="form-group">
+            <label asp-for="NewPerson.Name" class="control-label"></label>
+            <input asp-for="NewPerson.Name" class="form-control" />
+            <span asp-validation-for="NewPerson.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewPerson.Email" class="control-label"></label>
+            <input asp-for="NewPerson.Email" class="form-control" />
+            <span asp-validation-for="NewPerson.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewPerson.Age" class="control-label"></label>
+            <input asp-for="NewPerson.Age" class="form-control" />
+            <span asp-validation-for="NewPerson.Age" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Person</button>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model.People)
+            {
+                <tr>
+                    <td>@person.Id</td>
+                    <td>@person.Name</td>
+                    <td>@person.Email</td>
+                    <td>@person.Age</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
